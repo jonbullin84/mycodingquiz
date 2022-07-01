@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #363d7c;
-    --secondary-color: #144a52;
-    --tertiary-color: #ffffff;
+    --primary-color: #d82fb3;
+    --secondary-color: #141d52;
+    --tertiary-color: #f0f7f0;
   }
   
   * {
@@ -13,12 +13,12 @@
   
   
   body {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: rgb(white);
-  color: rgb(61, 102, 102);
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(0, 0, 0);
+  background-color: aqua;
+  font-weight: 300;
   }
-  
-  /* BEGIN HEADER STYLING */
+ 
   header div {
     display: flex;
     flex-wrap: wrap;
@@ -27,14 +27,14 @@
     padding: 5px;
     align-content: center;
   }
-  .style-indiv {
+  .style-1 {
   font-size: .50cm;
   font-weight: 100;
   background-color: transparent; 
   }
   
   
-  /* STYLE FOR BUTTON HEADER*/
+  /* header*/
   .high-score {
     font-size: .50cm;
     border: none;
@@ -54,8 +54,8 @@
     padding-block: 10px;
    
   }
-  /* HIDDEN HTML ELEMENTS COMPONETS*/
-  section .wrapper{
+  /* hidden elements*/
+  section .wrap{
     display: grid;
     grid-template-rows: 1fr, 2fr, 1fr;
     grid-auto-rows: (10px, auto);
@@ -108,7 +108,7 @@
   
   
   
-  /* STYLING FOR QUESTIONS */
+  /* styling */
   .questions-ul {
     list-style-type: none;
     display: contents;
@@ -123,7 +123,7 @@
     grid-gap: .05em; 
     justify-items: center; 
   }
-  /* BUTTON STYLE BODY */
+  /* button */
   .btn-style-main {
     background-color: var(--primary-color);
     color: var(--tertiary-color);
@@ -138,7 +138,7 @@
   
   .btn-style-main:active {
     background-color: var(--secondary-color);
-    box-shadow: 0 2px rgb(214, 71, 71); 
+    box-shadow: 0 2px rgb(71, 214, 71); 
     transform: translateY(1px);
   }
   .answer-btn {
@@ -157,7 +157,7 @@
   
   .answer-btn:active {
     background-color: var(--secondary-color);
-    box-shadow: 0 2px rgb(214, 71, 71); 
+    box-shadow: 0 2px rgb(83, 214, 71); 
     transform: translateY(1px);
   }
   .style-indiv {
@@ -172,9 +172,6 @@
   .span-1 {
     height: 30px;
   }
-  
-  
-  /* HIDE PAGE ELEMENT */
   
   #questions,
   #final-score,

@@ -1,45 +1,42 @@
-// DECOLRATIONS
-
-// VAR FOR TIMER   (global) 
+// timer
 var time = document.querySelector(".timer");
 var score = document.querySelector("#score");
 var secondsLeft = 75;
 
-//VAR FOR BUTTONS (global )
+//buttons variable
 const start = document.querySelector("#start");
 
-// VAR FOR INTRO/START
+// start variable
 const codersIntro = document.querySelector("#challenge-begins");
 
-//CALL END LOAD EMLEMENT VAR
 var questionsEl = document.querySelector(".all-question");
 
-// ELEMENT LOCATIONS VAR
+// locations
 let questionEl = document.querySelector("#question");
 const correctWrong = document.querySelector("#right-wrong");
 let questionCount = 0;
 
 
-// FINAL SCORE VAR
+// final score
 const finalEl = document.querySelector("#final-score");
 let initialsInput = document.querySelector("#initials");
 
-// HIGHSCORE VAR 
+// highscore
 const highscoresEl = document.querySelector("#high-scores");
 let scoreListEl = document.querySelector(".score-list");
 let scoreList = [];
 
-// CALL OUT THE ANSWER CLASS BUTTON ASSHOLE
+
 const ansBtn = document.querySelectorAll("button.answer-btn")
 
-// VAR SUBMITINT, GO, CLEAR, VIEW
+// submit variables
 let submitScrBtn = document.querySelector("#submit-score");
 let clearScrBtn = document.querySelector("#clearScores");
 let viewScrBtn = document.querySelector("#view-scores");
 let goBackBtn = document.querySelector("#goBack");
 
 
-// VAR ANSER CALL
+// answers variable
 const ans1Btn = document.querySelector("#answer-1");
 const ans2Btn = document.querySelector("#answer-2");
 const ans3Btn = document.querySelector("#answer-3");
@@ -47,7 +44,7 @@ const ans4Btn = document.querySelector("#answer-4");
 
 
 
-// ARRAY OF FIVE QUESTION, ZERO BASED, NUMBER CORECTLY. 
+// questions 
 const questions = [ 
     {
         question: "Commonly used data types DO Not include:",
@@ -76,7 +73,7 @@ const questions = [
     }
 ];
 
-// TIMER FUNCTION STARTS PROCESS 
+// timer start function
 function setTime() {
     let timerInterval = setInterval(function () {
         secondsLeft--;
@@ -91,7 +88,7 @@ function setTime() {
     }, 1000);
 }
 
-// QUIZ BEGIN FUNCTION
+// quiz start function
 function startQuiz() {
     codersIntro.style.display = "none";
     questionsEl.style.display = "block";
@@ -101,7 +98,7 @@ function startQuiz() {
     setQuestion(questionCount);
 }
 
-// SET QUESTION FUNCTION
+// questions functions
 function setQuestion(id) {
     if (id < questions.length) {
         questionEl.textContent = questions[id].question;
@@ -112,32 +109,32 @@ function setQuestion(id) {
     }
 }
 
-// EVENT FUNCTION CHECK ANSWERS BEGING PROCESS
+// event answers funtions
 function checkAnswer(event) {
     event.preventDefault();
 
-    //CREATING ELEMENT OF RIGHT OR WRONG
+    //right or wrong element
     correctWrong.style.display = "block";
     let p = document.createElement("p");
     correctWrong.appendChild(p);
 
-    // DISPLAY NEW ELEMENT FOR X AMOUNR OF TIME
+    // timer display element
     setTimeout(function () {
         p.style.display = 'none';
     }, 1000);
 
-    // RIGHT OR WRONG ANSWER CONDITIONAL STATEMENTS CORRECT
+    // if right
     if (questions[questionCount].correctAnswer === event.target.value) {
         p.textContent = "Correct!";
     } 
    
-     // RIGHT OR WRONG ANSWER CONDITIONAL STATEMENTS WRONG
+     // else if right/wrong
     else if (questions[questionCount].correctAnswer !== event.target.value) {
         secondsLeft = secondsLeft - 10;
         p.textContent = "Wrong!";
     }
 
-    // CYCLE 
+    // else
     if (questionCount < questions.length) {
         questionCount++;
     }
@@ -153,7 +150,7 @@ function addScore(event) {
     let init = initialsInput.value.toUpperCase();
     scoreList.push({ initials: init, score: secondsLeft });
 
-    // HIGH SCORE SORTING LIST
+    // list for high score
     scoreList = scoreList.sort((a, b) => {
         if (a.score < b.score) {
           return 1;
@@ -169,44 +166,43 @@ function addScore(event) {
         scoreListEl.append(li);
     }
 
-    // STORAGE OF SCORE 
+    // internal storage 
     storeScores();
     displayScores();
 }
-
+// storage functions
 function storeScores() {
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
 }
 
 function displayScores() {
-    // Parsing the JSON string to an object
+    
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
-    // WHEN RETREIVED FROM LOCAL, ARRAY
+    
     if (storedScoreList !== null) {
         scoreList = storedScoreList;
     }
 }
 
-// CLEAR THE STORE
+// clearing the scoreboard
 function clearScores() {
     localStorage.clear();
     scoreListEl.innerHTML="";
 }
 
-// START OFF ALL EVENT 
-// Start timer and display first question when click start quiz
+// timer start after click
 start.addEventListener("click", startQuiz);
 
-// CHECK ANSER LISTENER EVENT
+// check answer
 ansBtn.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
 
-// ADDING A SCORE EVENT
+// submit score button
 submitScrBtn.addEventListener("click", addScore);
 
-// GO BACK LISTENER EVENT FUNCTIN 
+// go back button 
 goBackBtn.addEventListener("click", function () {
     highscoresEl.style.display = "none";
     codersIntro.style.display = "block";
@@ -214,10 +210,10 @@ goBackBtn.addEventListener("click", function () {
     time.textContent = `Time:${secondsLeft}s`;
 });
 
-// CLEAR SCORE
+// clear scoreboard button
 clearScrBtn.addEventListener("click", clearScores);
 
-// HIGH SCORE BUTTON ALERT AND DISPLAY LISTENER EVENT
+// button for high score
 viewScrBtn.addEventListener("click", function () {
     if (highscoresEl.style.display === "none") {
         highscoresEl.style.display = "block";
@@ -227,6 +223,6 @@ viewScrBtn.addEventListener("click", function () {
     } 
     
     else {
-        return alert("Hey. Take Quiz. There is No High Score.");
+        return alert("No High Score.");
     }
 });

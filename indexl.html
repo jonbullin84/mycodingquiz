@@ -4,43 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quiz </title>
+    <title>Coding Quiz</title>
     <link rel="stylesheet" href='./assets/css/style.css'>
 </head>
 <body>
-    <!-- BEGIN HEADER-->
+    <!-- header-->
     <header class="header-title" id="header">
         <div class="veiw-high-scores-button">
-            <div class="style-indiv">
+            <div class="style-1">
                 <button class="view-high-scores high-score" id="view-scores" type="button"> View High Scores</button>
             </div>
-            <div class="style-indiv">
+            <div class="style-1">
                 <p class="timer">Time: 75</p>
             </div>
         </div>
     </header>
-    <!--BEGIN MAIN -->
-    <main>
-        <!-- BEGIN INITIAL CALLENG LAYOUT-->
-        <section class="wrapper" id="challenge-begins">
-            <!-- TOP DIV CONTENT [TITLE/QUESTION]-->
+    
+        <div>
+        <!-- questions-->
+        <section class="wrap" id="challenge-begins">
+            
             <div class="main-title">
-                <h1 class="switch" id="switch-out">Coding Quiz Challenge</h1>
+                <h1 class="switch" id="switch-out">Coding Quiz</h1>
             </div>
-            <!--MIDDLE DIV CONTENT [OPENING PARAGRAPH/POSSIBLE ANSWERS]-->
+            
             <div class="main-display" id="question-answer">
-                <p class="p-style" id="question-li">Try to answer the follwing code-related questions with-in the time
-                    limit. Keep in mind that incorrect answers will penalize your score-time by 10 seconds.
+                <p class="p-style" id="question-li">Try to answer all of the coding questions you can. Each wrong answer will result in a loss of 10 seconds on the timer. Good Luck!!!
                 </p>
             </div>
-            <!--BOTTOM DIV CONTENT [START/RESULTS]-->
+
             <div class="results" id="row-bottow">
                 <button id="start" class="start-btn btn-style-main" id="button-start">Start Quiz</button>
             </div>
         </section>
 
-        <!--BEGIN HIDDEN SECTIONS-->
-        <!--FIRST SECTION SWITCH-IN -->
+
         <section class="all-question" id="questions">
             <div class="questions-list">
                 <div class="list-inner">
@@ -58,15 +56,15 @@
 
                     <div id="right-wrong" class="font-weight-light font-italic">
 
-                        <hr> <!-- RUSULTS WILL ADDED HERE VIA JS ONCE RAN -->
+                        <hr> 
                     </div>
                 </div>
             </div>
         </section>
 
-        <!--FINAL SCORE ANSWER SECTION-->
-        <section class=".wrapper1" id="final-score">
-            <div class="style-indiv">
+        <!--final score-->
+        <section class=".wrap1" id="final-score">
+            <div class="style-1">
                 <div class="style-2">
                     <h2>All Done!</h2>
                     <p>Your final score is: <span id="score">0</span></p>
@@ -81,9 +79,9 @@
                 
         </section>
 
-        <!--HIGH SCORE RESULTS-->
+        <!--results-->
         <section id="high-scores">
-            <div class="style-indiv">
+            <div class="style-1">
                 <div class="style-3">
                     <p><h2>High Scores</h2></p>
                     <ol class="score-list"></ol>
@@ -93,7 +91,7 @@
              
             </div>
         </section>
-    </main>
+    </div>
     <script src="./assets/js/script.js"></script>
 
 </body>
