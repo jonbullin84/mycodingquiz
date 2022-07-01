@@ -7,23 +7,23 @@ var secondsLeft = 75;
 const start = document.querySelector("#start");
 
 // start variable
-const codersIntro = document.querySelector("#challenge-begins");
+const intro = document.querySelector("#challenge-begins");
 
-var questionsEl = document.querySelector(".all-question");
+var question1 = document.querySelector(".all-question");
 
 // locations
-let questionEl = document.querySelector("#question");
+let question2 = document.querySelector("#question");
 const correctWrong = document.querySelector("#right-wrong");
 let questionCount = 0;
 
 
 // final score
-const finalEl = document.querySelector("#final-score");
+const final = document.querySelector("#final-score");
 let initialsInput = document.querySelector("#initials");
 
 // highscore
-const highscoresEl = document.querySelector("#high-scores");
-let scoreListEl = document.querySelector(".score-list");
+const highScore1 = document.querySelector("#high-scores");
+let scorelist1 = document.querySelector(".score-list");
 let scoreList = [];
 
 
@@ -81,8 +81,8 @@ function setTime() {
 
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
-            questionsEl.style.display = "none";
-            finalEl.style.display = "block";
+            question1.style.display = "none";
+            final.style.display = "block";
             score.textContent = secondsLeft;
         }
     }, 1000);
@@ -90,8 +90,8 @@ function setTime() {
 
 // quiz start function
 function startQuiz() {
-    codersIntro.style.display = "none";
-    questionsEl.style.display = "block";
+    intro.style.display = "none";
+    question1.style.display = "block";
     questionCount = 0;
 
     setTime();
@@ -101,7 +101,7 @@ function startQuiz() {
 // questions functions
 function setQuestion(id) {
     if (id < questions.length) {
-        questionEl.textContent = questions[id].question;
+        question2.textContent = questions[id].question;
         ans1Btn.textContent = questions[id].answers[0];
         ans2Btn.textContent = questions[id].answers[1];
         ans3Btn.textContent = questions[id].answers[2];
@@ -144,8 +144,8 @@ function checkAnswer(event) {
 function addScore(event) {
     event.preventDefault();
 
-    finalEl.style.display = "none";
-    highscoresEl.style.display = "block";
+    final.style.display = "none";
+    highScore1.style.display = "block";
 
     let init = initialsInput.value.toUpperCase();
     scoreList.push({ initials: init, score: secondsLeft });
@@ -159,11 +159,11 @@ function addScore(event) {
         }
       });
     
-    scoreListEl.innerHTML="";
+    scorelist1.innerHTML="";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
-        scoreListEl.append(li);
+        scorelist1.append(li);
     }
 
     // internal storage 
@@ -188,7 +188,7 @@ function displayScores() {
 // clearing the scoreboard
 function clearScores() {
     localStorage.clear();
-    scoreListEl.innerHTML="";
+    scorelist1.innerHTML="";
 }
 
 // timer start after click
@@ -204,8 +204,8 @@ submitScrBtn.addEventListener("click", addScore);
 
 // go back button 
 goBackBtn.addEventListener("click", function () {
-    highscoresEl.style.display = "none";
-    codersIntro.style.display = "block";
+    highScore1.style.display = "none";
+    intro.style.display = "block";
     secondsLeft = 75;
     time.textContent = `Time:${secondsLeft}s`;
 });
@@ -215,11 +215,11 @@ clearScrBtn.addEventListener("click", clearScores);
 
 // button for high score
 viewScrBtn.addEventListener("click", function () {
-    if (highscoresEl.style.display === "none") {
-        highscoresEl.style.display = "block";
+    if (highScore1.style.display === "none") {
+        highScore1.style.display = "block";
     } 
-    else if (highscoresEl.style.display === "block") {
-        highscoresEl.style.display = "none";
+    else if (highScore1.style.display === "block") {
+        highScore1.style.display = "none";
     } 
     
     else {
